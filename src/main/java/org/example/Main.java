@@ -1,5 +1,11 @@
-package org.example;public class Main {
+package org.example;
+
+import org.example.controllers.GuessMyNumberController;
+
+public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        GuessMyNumberController game = new GuessMyNumberController();
+        game.start();
     }
 }
