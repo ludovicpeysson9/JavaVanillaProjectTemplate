@@ -1,5 +1,6 @@
 package org.example.controllers;
 
+import org.example.models.NumberGenerator;
 import org.example.views.DisplayView;
 
 import java.util.Random;
@@ -9,6 +10,7 @@ public class GuessMyNumberController {
 
     Scanner scanner;
     DisplayView display = new DisplayView();
+    NumberGenerator numberGenerator = new NumberGenerator();
 
     private int maxLimit = -1;
     private int chancesToGuess;
@@ -35,8 +37,8 @@ public class GuessMyNumberController {
     }
 
     public void setNumberToGuess(int maxLimit){
-        Random random = new Random();
-        numberToGuess = random.nextInt(maxLimit);
+        numberGenerator.setNumberToGuess(maxLimit);
+        this.numberToGuess = numberGenerator.getNumberToGuess();
     }
 
     public void setChancesToGuess() {
@@ -78,6 +80,7 @@ public class GuessMyNumberController {
     }
 
     public void runOfTheGame() {
+        numberToGuess = numberGenerator.getNumberToGuess();
         while (tentative != numberToGuess && chancesToGuess > 0) {
             display.display("Il vous reste : " + chancesToGuess + " tentatives");
             if (scanner.hasNextInt()) {
