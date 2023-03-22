@@ -22,6 +22,7 @@ public class GuessMyNumberController {
     }
 
     public void setWhichRange() {
+        
         while (maxLimit < 0 || maxLimit > 300) {
             display.chooseRangeMessage();
             if (scanner.hasNextInt()) {
